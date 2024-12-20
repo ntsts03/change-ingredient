@@ -13,22 +13,30 @@ class _OutputPageState extends State<OutputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('検索結果'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('検索結果'),
+      // ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              '代わりの食材は以下のとおりです',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              '代わりの食材',
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            Text(
-              widget.answer,
-              style: const TextStyle(fontSize: 16, height: 1.5),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Text(
+                widget.answer,
+                style: const TextStyle(fontSize: 20, height: 1.5),
+              ),
             ),
             const SizedBox(height: 20),
             Center(
@@ -36,7 +44,10 @@ class _OutputPageState extends State<OutputPage> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text('戻る'),
+                child: const Text(
+                  '戻る',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
           ],
