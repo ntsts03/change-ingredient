@@ -40,14 +40,18 @@ class _OutputPageState extends State<OutputPage> {
             ),
             const SizedBox(height: 20),
             Center(
-              child: TextButton(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  // backgroundColor: Colors.blue,
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: const Text('戻る'),
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text(
-                  '戻る',
-                  style: TextStyle(fontSize: 20),
-                ),
               ),
             ),
           ],

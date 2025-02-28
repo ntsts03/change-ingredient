@@ -42,11 +42,11 @@ class _InputPageState extends State<InputPage> {
               ),
               const SizedBox(height: 20),
               const Text(
-                '苦手な食材やアレルギーのある食材を入力すると、'
+                '苦手な食材やアレルギーのある食材を入力すると、\n'
                 'その代わりになる食材を提案します。\n'
                 '例えば、牛乳を使いたくない場合には豆乳を提案します。',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 14),
               ),
               const SizedBox(height: 20),
               TextField(
@@ -70,19 +70,26 @@ class _InputPageState extends State<InputPage> {
               ),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: isLoading ? null : () async {
-                  await getAnswer();
-                  if (answer != null && answer!.isNotEmpty) {
-                    // if (!mounted) return;
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => OutputPage(answer: answer ?? ''),
-                      ),
-                    );
-                  }
-                },
+                onPressed: isLoading
+                    ? null
+                    : () async {
+                        await getAnswer();
+                        if (answer != null && answer!.isNotEmpty) {
+                          // if (!mounted) return;
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  OutputPage(answer: answer ?? ''),
+                            ),
+                          );
+                        }
+                      },
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                  // backgroundColor: Colors.blue,
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
                 child: const Text('代わりの食材を検索'),
               ),
