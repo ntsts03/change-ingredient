@@ -41,7 +41,7 @@ class _InputPageState extends State<InputPage> {
             ),
             SizedBox(width: 8),
             Text(
-              'AI食材代替検索',
+              'Noフード → Goフード',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,

@@ -32,7 +32,7 @@ class _OutputPageState extends State<OutputPage> {
             ),
             SizedBox(width: 8),
             Text(
-              'AI食材代替検索',
+              'Noフード →Goフード',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -85,12 +85,23 @@ class _OutputPageState extends State<OutputPage> {
             Center(
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFFEE8B4E),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: const Text('戻る'),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.reply),
+                    SizedBox(width: 8),
+                    Text(
+                      '検索画面へ戻る',
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
                 onPressed: () {
                   Navigator.pop(context);
                 },
