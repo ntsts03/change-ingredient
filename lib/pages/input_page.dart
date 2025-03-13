@@ -127,8 +127,11 @@ class _InputPageState extends State<InputPage> {
                               if (!mounted) return;
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) =>
-                                      OutputPage(answer: answer ?? ''),
+                                  builder: (context) => OutputPage(
+                                    answer: answer ?? '',
+                                    dish: dishController.text,
+                                    ingredient: ingredientController.text,
+                                  ),
                                 ),
                               );
                             }
