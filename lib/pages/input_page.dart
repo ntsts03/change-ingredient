@@ -30,71 +30,132 @@ class _InputPageState extends State<InputPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                '食材の代替案を見つけましょう！',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      appBar: AppBar(
+        backgroundColor: const Color(0xFFEE8B4E),
+        title: const Row(
+          children: [
+            Icon(
+              Icons.restaurant,
+              color: Colors.white,
+              size: 28,
+            ),
+            SizedBox(width: 8),
+            Text(
+              'AI食材代替検索',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
-              const SizedBox(height: 20),
-              const Text(
+            ),
+          ],
+        ),
+        bottom: const PreferredSize(
+          preferredSize: Size.fromHeight(80),
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(32.0, 8.0, 16.0, 16.0),
+              child: Text(
                 '苦手な食材やアレルギーのある食材を入力すると、\n'
-                'その代わりになる食材を提案します。\n'
-                '例えば、牛乳を使いたくない場合には豆乳を提案します。',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: dishController,
-                decoration: const InputDecoration(
-                  labelText: '料理名',
-                  border: OutlineInputBorder(),
-                  filled: true,
-                  fillColor: Colors.white,
+                'その代わりになる食材を提案します。 例えば、牛乳\n'
+                'を使いたくない場合には豆乳を提案します。',
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: ingredientController,
-                decoration: const InputDecoration(
-                  labelText: '替えたい食材',
-                  border: OutlineInputBorder(),
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: isLoading
-                    ? null
-                    : () async {
-                        await getAnswer();
-                        if (answer != null && answer!.isNotEmpty) {
-                          // if (!mounted) return;
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  OutputPage(answer: answer ?? ''),
-                            ),
-                          );
-                        }
-                      },
-                style: ElevatedButton.styleFrom(
-                  // backgroundColor: Colors.blue,
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child: const Text('代わりの食材を検索'),
-              ),
-            ],
+            ),
           ),
+        ),
+      ),
+      body: Align(
+        alignment: const Alignment(0, -0.4),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    '料理名（任意）',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  TextField(
+                    controller: dishController,
+                    decoration: InputDecoration(
+                      hintText: '例: カレー、肉じゃが、パスタなど',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    '苦手な食材・アレルギー食材',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  TextField(
+                    controller: ingredientController,
+                    decoration: InputDecoration(
+                      hintText: '例: 牛乳、卵、小麦粉など',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  ElevatedButton(
+                    onPressed: isLoading
+                        ? null
+                        : () async {
+                            await getAnswer();
+                            if (answer != null && answer!.isNotEmpty) {
+                              if (!mounted) return;
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      OutputPage(answer: answer ?? ''),
+                                ),
+                              );
+                            }
+                          },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFEE8B4E),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.search),
+                        SizedBox(width: 8),
+                        Text(
+                          '検索',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
