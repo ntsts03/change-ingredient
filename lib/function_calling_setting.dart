@@ -35,7 +35,12 @@ class FoodResponse {
 
   @override
   String toString() {
-    return ingredients.map((ingredient) => '• $ingredient').join('\n');
+    final numberMarks = ['①', '②', '③', '④', '⑤'];
+    final List<String> numberedList = [];
+    for (var i = 0; i < ingredients.length; i++) {
+      numberedList.add('${numberMarks[i]} ${ingredients[i]}');
+    }
+    return numberedList.join('\n');
   }
 }
 
