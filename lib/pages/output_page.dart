@@ -32,7 +32,7 @@ class _OutputPageState extends State<OutputPage> {
             ),
             SizedBox(width: 8),
             Text(
-              'Noフード →Goフード',
+              'Noフード → Goフード',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -44,7 +44,7 @@ class _OutputPageState extends State<OutputPage> {
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(40),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Row(
