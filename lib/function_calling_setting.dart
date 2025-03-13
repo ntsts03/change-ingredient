@@ -41,12 +41,12 @@ class FoodResponse {
 
 FoodResponse? setFood(Map<String, Object?> arguments) {
   final dishName = arguments['dishName'] as String?;
-  final ingredients = (arguments['ingredients'] as List<dynamic>?)?.cast<String>();
-  
-  if (dishName == null || 
-      ingredients == null || 
-      ingredients.length != 5) return null;
-  
+  final ingredients =
+      (arguments['ingredients'] as List<dynamic>?)?.cast<String>();
+
+  if (dishName == null || ingredients == null || ingredients.length != 5) {
+    return null;
+  }
   return FoodResponse(
     dishName: dishName,
     ingredients: ingredients,
