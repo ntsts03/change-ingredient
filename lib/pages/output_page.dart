@@ -17,6 +17,10 @@ class OutputPage extends StatefulWidget {
 }
 
 class _OutputPageState extends State<OutputPage> {
+  List<String> get answerList {
+    return widget.answer.split('\n');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +60,6 @@ class _OutputPageState extends State<OutputPage> {
                       fontSize: 14,
                       color: Colors.white,
                     ),
-                    // textAlign: TextAlign.center,
                   ),
                 ],
               ),
@@ -64,47 +67,187 @@ class _OutputPageState extends State<OutputPage> {
           ),
         ),
       ),
+
+      // ボディ
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Text(
-                widget.answer,
-                style: const TextStyle(fontSize: 20, height: 1.5),
-              ),
-            ),
-            const SizedBox(height: 20),
-            Center(
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: const Color(0xFFEE8B4E),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Card(
+                        color: const Color(0xFFFEEAD3), // 背景色を濃いめに
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(
+                            color: Color(0xFFFFCCAA),
+                            width: 2,
+                          ),
+                        ),
+                        child: Container(
+                          width: 300,
+                          height: 100,
+                          padding: const EdgeInsets.all(16),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              answerList.isNotEmpty ? answerList[0] : '',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Color(0xFF8B4513),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      Card(
+                        color: const Color(0xFFFEEAD3), // 背景色を濃いめに
+
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(
+                            color: Color(0xFFFFCCAA),
+                            width: 2,
+                          ),
+                        ),
+                        child: Container(
+                          width: 300,
+                          height: 100,
+                          padding: const EdgeInsets.all(16),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              answerList.length > 1 ? answerList[1] : '',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Color(0xFF8B4513),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      Card(
+                        color: const Color(0xFFFEEAD3), // 背景色を濃いめに
+
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(
+                            color: Color(0xFFFFCCAA),
+                            width: 2,
+                          ),
+                        ),
+                        child: Container(
+                          width: 300,
+                          height: 100,
+                          padding: const EdgeInsets.all(16),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              answerList.length > 2 ? answerList[2] : '',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Color(0xFF8B4513),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      Card(
+                        color: const Color(0xFFFEEAD3), // 背景色を濃いめに
+
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(
+                            color: Color(0xFFFFCCAA),
+                            width: 2,
+                          ),
+                        ),
+                        child: Container(
+                          width: 300,
+                          height: 100,
+                          padding: const EdgeInsets.all(16),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              answerList.length > 3 ? answerList[3] : '',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Color(0xFF8B4513),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 14),
+                      Card(
+                        color: const Color(0xFFFEEAD3), // 背景色を濃いめに
+
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          side: const BorderSide(
+                            color: Color(0xFFFFCCAA),
+                            width: 2,
+                          ),
+                        ),
+                        child: Container(
+                          width: 300,
+                          height: 100,
+                          padding: const EdgeInsets.all(16),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Text(
+                              answerList.length > 4 ? answerList[4] : '',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Color(0xFF8B4513),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.reply),
-                    SizedBox(width: 8),
-                    Text(
-                      '検索画面へ戻る',
-                      style: TextStyle(fontSize: 18),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Center(
+              child: SizedBox(
+                width: 250,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: const Color(0xFFEE8B4E),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ],
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 12),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.reply),
+                      SizedBox(width: 8),
+                      Text(
+                        '検索画面へ戻る',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
               ),
             ),
           ],
