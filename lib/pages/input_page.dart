@@ -54,13 +54,12 @@ class _InputPageState extends State<InputPage> {
           preferredSize: Size.fromHeight(80),
           child: Center(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(32.0, 8.0, 16.0, 16.0),
+              padding: EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
               child: Text(
-                '苦手な食材やアレルギーのある食材を入力すると、\n'
-                'その代わりになる食材を提案します。 例えば、牛乳\n'
-                'を使いたくない場合には豆乳を提案します。',
+                '苦手な食材やアレルギーのある食材を入力すると、その代わりになる食材を提案します。\n'
+                '例えば、牛乳を使いたくない場合には豆乳を提案します。',
                 style: TextStyle(
-                  fontSize: 14,
+                  fontSize: 12.5,
                   color: Colors.white,
                 ),
               ),
@@ -70,107 +69,109 @@ class _InputPageState extends State<InputPage> {
       ),
       body: Align(
         alignment: const Alignment(0, -0.4),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    '料理名（任意）',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF8B4513),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: dishController,
-                    decoration: InputDecoration(
-                      hintText: '例: カレー、肉じゃが、パスタなど',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      '料理名（任意）',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF8B4513),
                       ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFFEE7D42),
+                    ),
+                    const SizedBox(height: 8),
+                    TextField(
+                      controller: dishController,
+                      decoration: InputDecoration(
+                        hintText: '例: カレー、肉じゃが、パスタなど',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFEE7D42),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    '苦手な食材・アレルギー食材',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF8B4513),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  TextField(
-                    controller: ingredientController,
-                    decoration: InputDecoration(
-                      hintText: '例: 牛乳、卵、小麦粉など',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
+                    const SizedBox(height: 20),
+                    const Text(
+                      '苦手な食材・アレルギー食材',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF8B4513),
                       ),
-                      filled: true,
-                      fillColor: Colors.white,
-                      enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Color(0xFFEE7D42),
+                    ),
+                    const SizedBox(height: 8),
+                    TextField(
+                      controller: ingredientController,
+                      decoration: InputDecoration(
+                        hintText: '例: 牛乳、卵、小麦粉など',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color(0xFFEE7D42),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 40),
-                  ElevatedButton(
-                    onPressed: isLoading
-                        ? null
-                        : () async {
-                            await getAnswer();
-                            if (answer != null && answer!.isNotEmpty) {
-                              if (!mounted) return;
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => OutputPage(
-                                    answer: answer ?? '',
-                                    dish: dishController.text,
-                                    ingredient: ingredientController.text,
+                    const SizedBox(height: 40),
+                    ElevatedButton(
+                      onPressed: isLoading
+                          ? null
+                          : () async {
+                              await getAnswer();
+                              if (answer != null && answer!.isNotEmpty) {
+                                if (!mounted) return;
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => OutputPage(
+                                      answer: answer ?? '',
+                                      dish: dishController.text,
+                                      ingredient: ingredientController.text,
+                                    ),
                                   ),
-                                ),
-                              );
-                            }
-                          },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFEE8B4E),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                                );
+                              }
+                            },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFEE8B4E),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.search),
+                          SizedBox(width: 8),
+                          Text(
+                            '検索',
+                            style: TextStyle(fontSize: 18),
+                          ),
+                        ],
                       ),
                     ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.search),
-                        SizedBox(width: 8),
-                        Text(
-                          '検索',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
