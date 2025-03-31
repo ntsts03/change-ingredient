@@ -83,6 +83,7 @@ class _InputPageState extends State<InputPage> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: Color(0xFF8B4513),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -95,6 +96,11 @@ class _InputPageState extends State<InputPage> {
                       ),
                       filled: true,
                       fillColor: Colors.white,
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFFEE7D42),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -103,6 +109,7 @@ class _InputPageState extends State<InputPage> {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: Color(0xFF8B4513),
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -115,6 +122,11 @@ class _InputPageState extends State<InputPage> {
                       ),
                       filled: true,
                       fillColor: Colors.white,
+                      enabledBorder: const OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xFFEE7D42),
+                        ),
+                      ),
                     ),
                   ),
                   const SizedBox(height: 40),
